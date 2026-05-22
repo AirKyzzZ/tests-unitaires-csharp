@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShoppingCart
@@ -33,6 +34,9 @@ namespace ShoppingCart
         /// <exception cref="System.ArgumentOutOfRangeException">If the quantity or price are negative or zero.</exception>
         public Article Add(string productName, int qty, decimal price)
         {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(qty, nameof(qty));
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price, nameof(price));
+
             if (articles.ContainsKey(productName))
             {
                 var article = articles[productName];
@@ -52,6 +56,12 @@ namespace ShoppingCart
         /// <exception cref="System.ArgumentException">No article exists with the given product name</exception>
         public void DecreaseArticleQuantity(string productName)
         {
+            if (!articles.ContainsKey(productName))
+            {
+                throw new ArgumentException(
+                    $"Aucun article nommé « {productName} » dans le panier.", nameof(productName));
+            }
+
             if(articles[productName].Quantity == 1)
             {
                 articles.Remove(productName);
@@ -69,6 +79,6 @@ namespace ShoppingCart
         /// <summary>
         /// Check if the shopping cart is empty
         /// </summary>
-        public bool IsEmpty => articles.Any();
+        public bool IsEmpty => !articles.Any();
     }
 }
