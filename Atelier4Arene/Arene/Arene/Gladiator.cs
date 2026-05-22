@@ -22,7 +22,7 @@ public class Gladiator(string name, int health, int strength, int armor)
                 nameof(dice), score, "Le dé doit produire une valeur entre 1 et 6.");
         }
 
-        int degats = score + Strength - opponent.Armor;
+        int degats = Math.Max(0, score + Strength - opponent.Armor);
         opponent.Health -= degats;
     }
 }
