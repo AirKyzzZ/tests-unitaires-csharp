@@ -29,6 +29,6 @@ public class Gladiator(string name, int health, int strength, int armor)
         }
 
         int degats = Math.Max(0, degatsBruts - opponent.Armor);
-        opponent.Health -= degats;
+        opponent.Health = Math.Max(0, opponent.Health - degats);
     }
 }
