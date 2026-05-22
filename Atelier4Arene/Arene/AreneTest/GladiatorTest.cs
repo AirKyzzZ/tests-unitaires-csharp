@@ -51,4 +51,15 @@ public class GladiatorTest
 
         Assert.AreEqual(17, adversaire.Health);
     }
+
+    [TestMethod]
+    public void Attaque_ContreUneArmureBienPlusForte_NInfligeAucunDegat()
+    {
+        var attaquant = UnGladiateur(strength: 3);
+        var adversaire = UnGladiateur(health: 30, armor: 50);
+
+        attaquant.Attack(adversaire, new DeFixe(2));
+
+        Assert.AreEqual(30, adversaire.Health);
+    }
 }
