@@ -62,4 +62,15 @@ public class GladiatorTest
 
         Assert.AreEqual(30, adversaire.Health);
     }
+
+    [TestMethod]
+    public void Attaque_CoupCritique_UnSixDoubleLeDePlusLaForce()
+    {
+        var attaquant = UnGladiateur(strength: 5);
+        var adversaire = UnGladiateur(health: 40, armor: 2);
+
+        attaquant.Attack(adversaire, new DeFixe(6));
+
+        Assert.AreEqual(20, adversaire.Health);
+    }
 }
