@@ -7,7 +7,13 @@ public static class Horloge
           "sept", "huit", "neuf", "dix", "onze" };
 
     public static string EnTexte(DateTime heure)
-        => Composer(heure.Hour, MinutesAvant(heure.Minute));
+    {
+        int minute = heure.Minute;
+
+        return minute <= 30
+            ? Composer(heure.Hour, MinutesAvant(minute))
+            : Composer((heure.Hour + 1) % 24, MinutesApres(minute));
+    }
 
     private static string Composer(int heure24, string minutes)
     {
@@ -29,6 +35,16 @@ public static class Horloge
         20 => " vingt",
         25 => " vingt-cinq",
         30 => " et demie",
+        _  => throw new NotImplementedException(),
+    };
+
+    private static string MinutesApres(int minute) => minute switch
+    {
+        35 => " moins vingt-cinq",
+        40 => " moins vingt",
+        45 => " moins le quart",
+        50 => " moins dix",
+        55 => " moins cinq",
         _  => throw new NotImplementedException(),
     };
 }
