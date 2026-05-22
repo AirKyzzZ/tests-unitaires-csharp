@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HorlogeParlante/HorlogeParlante.csproj" />
+  <Project Path="HorlogeParlanteTest/HorlogeParlanteTest.csproj" />
+</Solution>
