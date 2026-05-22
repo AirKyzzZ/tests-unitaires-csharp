@@ -19,4 +19,13 @@ public class GladiatorTest
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(
             () => attaquant.Attack(adversaire, new DeFixe(valeurTruquee)));
     }
+
+    [TestMethod]
+    public void Attaque_ContreSoiMeme_LeveArgumentException()
+    {
+        var gladiateur = UnGladiateur();
+
+        Assert.ThrowsExactly<ArgumentException>(
+            () => gladiateur.Attack(gladiateur, new DeFixe(3)));
+    }
 }
