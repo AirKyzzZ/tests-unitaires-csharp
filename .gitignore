@@ -1,0 +1,23 @@
+## .NET build artifacts
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+
+## Test results / coverage
+[Tt]est[Rr]esult*/
+*.coverage
+*.coverlet.json
+coverage*.json
+coverage*.xml
+coverage*.info
+
+## IDE
+.vs/
+.idea/
+.vscode/
+
+## OS
+.DS_Store
