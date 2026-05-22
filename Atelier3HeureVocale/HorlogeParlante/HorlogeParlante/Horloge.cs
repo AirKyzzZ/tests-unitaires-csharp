@@ -9,11 +9,22 @@ public static class Horloge
     public static string EnTexte(DateTime heure)
     {
         int minute = heure.Minute;
+        int reste = minute % 5;
+
+        if (reste != 0)
+        {
+            int ecart = reste <= 2 ? reste : reste - 5;
+            DateTime arrondie = heure.AddMinutes(-ecart);
+            return $"{EnTexte(arrondie)} à {Precision(Math.Abs(ecart))}";
+        }
 
         return minute <= 30
             ? Composer(heure.Hour, MinutesAvant(minute))
             : Composer((heure.Hour + 1) % 24, MinutesApres(minute));
     }
+
+    private static string Precision(int ecartMinutes)
+        => ecartMinutes == 1 ? "une minute près" : "deux minutes près";
 
     private static string Composer(int heure24, string minutes)
     {
