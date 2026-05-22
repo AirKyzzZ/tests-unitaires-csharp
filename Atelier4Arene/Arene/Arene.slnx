@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Arene/Arene.csproj" />
+  <Project Path="AreneTest/AreneTest.csproj" />
+</Solution>
