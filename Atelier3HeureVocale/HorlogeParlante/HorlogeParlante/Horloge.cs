@@ -7,11 +7,13 @@ public static class Horloge
           "sept", "huit", "neuf", "dix", "onze" };
 
     public static string EnTexte(DateTime heure)
+        => Composer(heure.Hour);
+
+    private static string Composer(int heure24)
     {
-        int h = heure.Hour;
-        int h12 = h % 12;
+        int h12 = heure24 % 12;
         string motHeure = h12 == 1 ? "une heure" : $"{NomsHeures[h12]} heures";
-        string periode = h < 12 ? "du matin" : "de l'après-midi";
+        string periode = heure24 < 12 ? "du matin" : "de l'après-midi";
         return $"{motHeure} {periode}";
     }
 }
