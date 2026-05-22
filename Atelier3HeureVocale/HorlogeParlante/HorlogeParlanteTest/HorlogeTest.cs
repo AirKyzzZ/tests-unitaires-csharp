@@ -14,4 +14,11 @@ public class HorlogeTest
     [DataRow(11, "onze heures du matin")]
     public void HeurePile_DuMatin(int h, string attendu)
         => Assert.AreEqual(attendu, Heure(h));
+
+    [TestMethod]
+    [DataRow(13, "une heure de l'après-midi")]
+    [DataRow(14, "deux heures de l'après-midi")]
+    [DataRow(18, "six heures de l'après-midi")]
+    public void HeurePile_DeLApresMidi(int h, string attendu)
+        => Assert.AreEqual(attendu, Heure(h));
 }
