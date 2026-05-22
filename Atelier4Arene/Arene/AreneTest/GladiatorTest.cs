@@ -28,4 +28,15 @@ public class GladiatorTest
         Assert.ThrowsExactly<ArgumentException>(
             () => gladiateur.Attack(gladiateur, new DeFixe(3)));
     }
+
+    [TestMethod]
+    public void Attaque_Standard_LAdversairePerdLeDePlusLaForceMoinsSonArmure()
+    {
+        var attaquant = UnGladiateur(strength: 5);
+        var adversaire = UnGladiateur(health: 30, armor: 2);
+
+        attaquant.Attack(adversaire, new DeFixe(3));
+
+        Assert.AreEqual(24, adversaire.Health);
+    }
 }
