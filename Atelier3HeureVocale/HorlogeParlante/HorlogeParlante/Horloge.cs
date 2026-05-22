@@ -46,7 +46,8 @@ public static class Horloge
         20 => " vingt",
         25 => " vingt-cinq",
         30 => " et demie",
-        _  => throw new NotImplementedException(),
+        _  => throw new ArgumentOutOfRangeException(
+            nameof(minute), minute, "Minute attendue : un multiple de 5."),
     };
 
     private static string MinutesApres(int minute) => minute switch
@@ -56,6 +57,7 @@ public static class Horloge
         45 => " moins le quart",
         50 => " moins dix",
         55 => " moins cinq",
-        _  => throw new NotImplementedException(),
+        _  => throw new ArgumentOutOfRangeException(
+            nameof(minute), minute, "Minute attendue : un multiple de 5."),
     };
 }
