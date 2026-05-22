@@ -39,4 +39,16 @@ public class GladiatorTest
 
         Assert.AreEqual(24, adversaire.Health);
     }
+
+    [TestMethod]
+    public void Attaque_DeuxAttaquesStandardConsecutives_LesDegatsSeCumulent()
+    {
+        var attaquant = UnGladiateur(strength: 5);
+        var adversaire = UnGladiateur(health: 30, armor: 2);
+
+        attaquant.Attack(adversaire, new DeFixe(3));
+        attaquant.Attack(adversaire, new DeFixe(4));
+
+        Assert.AreEqual(17, adversaire.Health);
+    }
 }
