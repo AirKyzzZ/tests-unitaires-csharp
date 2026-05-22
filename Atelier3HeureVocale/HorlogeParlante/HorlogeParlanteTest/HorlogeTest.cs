@@ -45,4 +45,12 @@ public class HorlogeTest
     [DataRow(23, 50, "minuit moins dix")]
     public void Tranches5Minutes_ApresLaDemiHeure(int h, int m, string attendu)
         => Assert.AreEqual(attendu, Heure(h, m));
+
+    [TestMethod]
+    [DataRow(12, 4, "midi cinq à une minute près")]
+    [DataRow(7, 1, "sept heures du matin à une minute près")]
+    [DataRow(8, 48, "neuf heures moins dix du matin à deux minutes près")]
+    [DataRow(15, 23, "trois heures vingt-cinq de l'après-midi à deux minutes près")]
+    public void MinutesPrecises_ArrondiesAuxCinqMinutes(int h, int m, string attendu)
+        => Assert.AreEqual(attendu, Heure(h, m));
 }
