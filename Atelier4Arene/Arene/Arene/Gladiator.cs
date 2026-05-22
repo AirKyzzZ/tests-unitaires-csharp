@@ -7,7 +7,7 @@ public class Gladiator(string name, int health, int strength, int armor)
     public int Strength { get; private set; } = strength;
     public int Armor { get; private set; } = armor;
 
-    public void Attack(Gladiator opponent, Dice dice)
+    public void Attack(Gladiator opponent, IDice dice)
     {
         var score = dice.Roll();
 

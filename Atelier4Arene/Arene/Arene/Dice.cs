@@ -1,6 +1,6 @@
 namespace Arene;
 
-public class Dice(int faces)
+public class Dice(int faces) : IDice
 {
     private readonly Random rnd = new();
 
