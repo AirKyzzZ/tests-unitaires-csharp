@@ -73,4 +73,15 @@ public class GladiatorTest
 
         Assert.AreEqual(20, adversaire.Health);
     }
+
+    [TestMethod]
+    public void Attaque_DegatsSuperieursAuxPointsDeVie_LAdversaireTombeAZeroSansPVNegatifs()
+    {
+        var attaquant = UnGladiateur(strength: 10);
+        var adversaire = UnGladiateur(health: 5, armor: 0);
+
+        attaquant.Attack(adversaire, new DeFixe(6));
+
+        Assert.AreEqual(0, adversaire.Health);
+    }
 }
