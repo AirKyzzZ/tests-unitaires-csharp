@@ -9,6 +9,12 @@ public class Gladiator(string name, int health, int strength, int armor)
 
     public void Attack(Gladiator opponent, IDice dice)
     {
+        if (ReferenceEquals(opponent, this))
+        {
+            throw new ArgumentException(
+                "Un gladiateur ne peut pas s'attaquer lui-même.", nameof(opponent));
+        }
+
         int score = dice.Roll();
         if (score is < 1 or > 6)
         {
