@@ -22,13 +22,18 @@ public class Gladiator(string name, int health, int strength, int armor)
                 nameof(dice), score, "Le dé doit produire une valeur entre 1 et 6.");
         }
 
+        int degats = CalculerDegats(score, opponent.Armor);
+        opponent.Health = Math.Max(0, opponent.Health - degats);
+    }
+
+    private int CalculerDegats(int score, int armureAdverse)
+    {
         int degatsBruts = score + Strength;
         if (score == 6)
         {
             degatsBruts *= 2;
         }
 
-        int degats = Math.Max(0, degatsBruts - opponent.Armor);
-        opponent.Health = Math.Max(0, opponent.Health - degats);
+        return Math.Max(0, degatsBruts - armureAdverse);
     }
 }
