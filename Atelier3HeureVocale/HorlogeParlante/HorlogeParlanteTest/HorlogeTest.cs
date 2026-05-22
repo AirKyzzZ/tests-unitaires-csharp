@@ -27,4 +27,13 @@ public class HorlogeTest
     [DataRow(12, "midi")]
     public void HeurePile_MidiEtMinuit(int h, string attendu)
         => Assert.AreEqual(attendu, Heure(h));
+
+    [TestMethod]
+    [DataRow(9, 5, "neuf heures cinq du matin")]
+    [DataRow(12, 10, "midi dix")]
+    [DataRow(0, 15, "minuit et quart")]
+    [DataRow(15, 25, "trois heures vingt-cinq de l'après-midi")]
+    [DataRow(8, 30, "huit heures et demie du matin")]
+    public void Tranches5Minutes_PremiereDemiHeure(int h, int m, string attendu)
+        => Assert.AreEqual(attendu, Heure(h, m));
 }
