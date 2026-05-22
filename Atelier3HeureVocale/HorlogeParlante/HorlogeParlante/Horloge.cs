@@ -9,7 +9,9 @@ public static class Horloge
     public static string EnTexte(DateTime heure)
     {
         int h = heure.Hour;
-        string motHeure = h == 1 ? "une heure" : $"{NomsHeures[h]} heures";
-        return $"{motHeure} du matin";
+        int h12 = h % 12;
+        string motHeure = h12 == 1 ? "une heure" : $"{NomsHeures[h12]} heures";
+        string periode = h < 12 ? "du matin" : "de l'après-midi";
+        return $"{motHeure} {periode}";
     }
 }
